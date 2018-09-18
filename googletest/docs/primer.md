@@ -416,7 +416,7 @@ The above uses both `ASSERT_*` and `EXPECT_*` assertions. The rule of thumb is
 to use `EXPECT_*` when you want the test to continue to reveal more errors after
 the assertion failure, and use `ASSERT_*` when continuing after failure doesn't
 make sense. For example, the second assertion in the `Dequeue` test is
-=ASSERT_NE(nullptr, n)=, as we need to dereference the pointer `n` later, which
+`ASSERT_NE(nullptr, n)`, as we need to dereference the pointer `n` later, which
 would lead to a segfault when `n` is `NULL`.
 
 When these tests run, the following happens:
@@ -445,7 +445,7 @@ different test cases, or even different source files.
 
 When invoked, the `RUN_ALL_TESTS()` macro:
 
-1. Saves the state of all googletest flags
+*   Saves the state of all googletest flags.
 
 *   Creates a test fixture object for the first test.
 
@@ -457,11 +457,11 @@ When invoked, the `RUN_ALL_TESTS()` macro:
 
 *   Deletes the fixture.
 
-* Restores the state of all googletest flags
+*   Restores the state of all googletest flags.
 
 *   Repeats the above steps for the next test, until all tests have run.
 
-If a fatal failure happens the subsequent steps will be skipped.
+If a fatal failure happens, the subsequent steps will be skipped.
 
 > IMPORTANT: You must **not** ignore the return value of `RUN_ALL_TESTS()`, or
 > you will get a compiler error. The rationale for this design is that the
